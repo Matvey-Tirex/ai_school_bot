@@ -3,3 +3,4 @@ __pycache__/env.cpython-313.pyc
 __pycache__/functions.cpython-313.pyc
 __pycache__/gpt.cpython-313.pyc
 __pycache__/vision.cpython-313.pyc
+env.py
