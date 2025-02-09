@@ -14,7 +14,7 @@ def start_media_bot(message):
 
 @bot.message_handler(content_types=["text"])
 def start_text_bot(message):
-    bot.reply_to(message, "Привет! Я бот!")
+    bot.reply_to(message, "Привет! Я бот-ассистент по русскому языку. Ты можешь отправить мне фото с рукописным текстом, а в ответе я напишу есть ли в нем ошибки!")
 
 
 def getBase64FromFileId(file_id):
