@@ -1,5 +1,5 @@
 # Yandex
-api_token_yandex = "t1.9euelZrLmc_PjY6cis6czMaezMyYne3rnpWayJDKkZSanZuPjY-Tnc_Lzprl8_dVKXs7-e9GUQhS_d3z9xVYeDv570ZRCFL9zef1656Vms7Nnc6OzJaMkcuYkJSJyY6Z7_zF656Vms7Nnc6OzJaMkcuYkJSJyY6Z.eU4yZoDnWCN0URM0r1Qk6MXZiV7YRuWXwQHdi4UG_bx4b0Bhu1RTyqz2hePLbM4gZS6cQvRhxNfyG3EixPEFAA"
-catalog_id_yandex = "b1gslls4svrnul3dbkqs"
+api_token_yandex = ""
+catalog_id_yandex = ""
 # Telegram
-api_token_telegram = '8154281550:AAHWjB7Mj7mqOBKK-1RONJ9BeP3Lo2PsM6I'
+api_token_telegram = ""
