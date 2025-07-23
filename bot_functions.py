@@ -21,20 +21,21 @@ def start_text_bot(message):
 @bot.message_handler(commands=["check"])
 def func(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    btn1 = types.KeyboardButton("Отправит исправленый текс")
+    btn1 = types.KeyboardButton("Отправит исправленый тектс с выделеными исправлеными словами")
     btn2 = types.KeyboardButton("Выделит слова с ошибками")
     btn3 = types.KeyboardButton("Отправит исправленый текс ,выделит слова с ошибками и выделит темы для повторения")
     markup.add(btn1)
     markup.add(btn2)
     markup.add(btn3)
-    bot.send_message(message.chat.id, "выберете проверку", reply_markup=markup)
+    bot.send_message(message.chat.id, "Выберете тип проверку", reply_markup=markup)
 
 @bot.message_handler(content_types=["text"])
 def hard(message):
     global type_check
-    if message.text == "Отправит исправленый текс": type_check = 0
+    if message.text == "Отправит исправленый тектс с выделеными исправлеными словами": type_check = 0
     elif message.text == "Отправит слова с ошибками": type_check = 1
     elif message.text == "Отправит исправленый текс ,выделит слова с ошибками и выделит темы для повторения": type_check = 2
+    bot.send_message(message.chat.id, "*Проверка обновлена", reply_markup=types.ReplyKeyboardRemove())
 
 def getBase64FromFileId(file_id):
     message = bot.get_file(file_id)
