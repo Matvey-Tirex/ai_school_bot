@@ -27,7 +27,7 @@ def start_text_bot(message):
 
 # Функция для чтобы показать сколько у вас осталось токенов
 @bot.message_handler(commands=["tokens"])
-def check_tokens(message):
+def how_many_tokens(message):
     if check_tokens(message, bot) != "":
         bot.send_message(message.chat.id, check_tokens(message, bot))
 
@@ -69,7 +69,7 @@ def start_media_bot(message):
     init_account(message, bot)
     # Проверяем есть ли токены у пользователя
     # И заодно вычитаем с аккаунта запрос
-    if use_token(message.from_user.ids) == True:
+    if use_token(message.from_user.id) == True:
         bot.reply_to(message, correct_message)
     else:
         bot.reply_to(message, "Извините, у вас недостаточно токенов")
