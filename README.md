@@ -15,7 +15,7 @@
 
 ## 📊 UML-диаграмма процесса
 
-![UML Diagram](diagrams/schema.png)
+![UML Diagram](work-schema.png)
 
 ## 🤖 Попробовать в Telegram
 
