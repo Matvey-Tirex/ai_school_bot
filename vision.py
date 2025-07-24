@@ -10,7 +10,7 @@ def YandexrecognizeText(base64_photo):
     "model": "handwritten",
     "content": f"{base64_photo}"
   }
-  # Url на который мы будем отсылать запрос
+  # Url на который мы будем посылать запрос
   url = "https://ocr.api.cloud.yandex.net/ocr/v1/recognizeText"
   headers = {
       "Content-Type": "application/json",

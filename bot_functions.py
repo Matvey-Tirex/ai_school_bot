@@ -1,4 +1,4 @@
-# Импортируем наужные быблиотеки
+# Импортируем нужные библиотеки
 import telebot
 import base64
 from telebot.types import BotCommand
@@ -8,7 +8,7 @@ from vision import YandexrecognizeText
 from env import api_token_telegram
 from users import *
 
-# Создаём две переменые тип-провреки и bot
+# Создать две переменные тип-проверки и бот
 type_check = 1
 bot = telebot.TeleBot(api_token_telegram)
 
@@ -22,14 +22,14 @@ def start_text_bot(message):
         BotCommand(command='/tokens', description='Покажет ваши токены')
     ]
     bot.set_my_commands(main_menu_commands)
-    # Не забываем про этикет и расказать что это за бот
+    # Не забываем про этикет и рассказать что это за бот
     bot.reply_to(message, "Привет! Я бот-ассистент.\nТы можешь отправить мне фотографию с рукописным текстом, и я проверю, есть ли в нем ошибки!\nВот команды, которые ты можешь использовать:\n/start - Запуск бота\n/check - Изменение типа проверки\n/tokens - Покажет сколько у вас осталось токенов")
 
 # Функция для чтобы показать сколько у вас осталось токенов
 @bot.message_handler(commands=["tokens"])
 def check_tokens(message):
-    if tokens(message, bot) != "":
-        bot.send_message(message.chat.id, tokens(message, bot))
+    if check_tokens(message, bot) != "":
+        bot.send_message(message.chat.id, check_tokens(message, bot))
 
 # Здесь мы создали функцию в которая настраивает тип проверки текста
 @bot.message_handler(commands=["check"])
@@ -47,7 +47,7 @@ def func(message):
 
 @bot.message_handler(content_types=["text"])
 def hard(message):
-    # Меняем тип проверки от выбора пользавателья 
+    # Меняем тип проверки от выбора пользователя
     global type_check
     if message.text == "Отправит исправленный текст с выделенными и исправленными словами": 
         type_check = 0
@@ -59,36 +59,36 @@ def hard(message):
         type_check = 2
         bot.send_message(message.chat.id, "*Тип проверки обновлён", reply_markup=types.ReplyKeyboardRemove())
 
-# В этой функцие мы принимаем фото, отдаём неиронке и забираем текст
+# В этой функцией мы принимаем фото, отдаём нейронке и забираем текст
 @bot.message_handler(content_types=["photo"])
 def start_media_bot(message):
     photo_file_id = message.photo[-1].file_id
-    # После отдаеём следущей неиронке с типом проверки который мы выбрали
+    # После отдаем следующей нейронке с типом проверки который мы выбрали
     correct_message = check_text(photo_file_id)
     # Проверяем есть ли пользователь базе данных 
-    check_account(message, bot)
+    init_account(message, bot)
     # Проверяем есть ли токены у пользователя
-    # И заодно вычитаем с аккаунта запирос
-    if take_token(message) == True:
+    # И заодно вычитаем с аккаунта запрос
+    if use_token(message.from_user.ids) == True:
         bot.reply_to(message, correct_message)
     else:
         bot.reply_to(message, "Извините, у вас недостаточно токенов")
 
-# Преаброзуем файл
+# Преобразуем файл
 def getBase64FromFileId(file_id):
     message = bot.get_file(file_id)
     file_in_bytes = bot.download_file(message.file_path)
     file_in_base64 = base64.b64encode(file_in_bytes).decode("utf-8")
     return(file_in_base64)
 
-# Принимаем фото на фход
+# Принимаем фото на вход
 def check_text(file_id):
     global type_check
     # Преобразуем в base64
     base64_message = getBase64FromFileId(file_id)
-    # Дальше пропускаем через неиронку для получения текста
+    # Дальше пропускаем через нейронку для получения текста
     text = YandexrecognizeText(base64_message)
-    # Под конец выдаёт ответ под выбраный тип проверки
+    # Под конец выдаёт ответ под выбранный тип проверки
     checked_text = YandexcheckText(text, type_check)
     return checked_text
 
