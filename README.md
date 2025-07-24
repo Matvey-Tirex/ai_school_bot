@@ -19,7 +19,7 @@
 
 ## 🤖 Попробовать в Telegram
 
-Напишите нашему боту: [@Matvey20_bot](https://t.me/Matvey20_bot)
+Напишите моему боту: [@Matvey20_bot](https://t.me/Matvey20_bot)
 
 ---
 
