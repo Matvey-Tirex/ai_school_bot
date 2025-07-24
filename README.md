@@ -19,7 +19,7 @@
 
 ![UML Diagram](work-schema.png)
 
-## 🤖 Попробовать в Telegram
+## Попробовать в Telegram
 
 Напишите моему боту: [@Matvey20_bot](https://t.me/Matvey20_bot)
 
