@@ -36,7 +36,7 @@ def YandexcheckText(text, type_check):
     }
 
     response = requests.post(url, headers=headers, json=prompt)
-    result = response.json()["result"]["alternatives"][0]["message"]["text"]
     # Этот путь спецально настроен чтобы из ответа достовать только текст
+    result = response.json()["result"]["alternatives"][0]["message"]["text"]
     print(result)
     return result
